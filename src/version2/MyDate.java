@@ -8,8 +8,6 @@ public class MyDate {
     public MyDate() {
     }
 
-
-
     public MyDate(int day, int month, int year) {
         this.day = day;
         this.month = month;
@@ -20,23 +18,31 @@ public class MyDate {
         return day;
     }
 
-    public void setDay(int day) {
-        this.day = day;
-    }
-
     public int getMonth() {
         return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
     }
 
     public int getYear() {
         return year;
     }
 
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
     public void setYear(int year) {
         this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        String[] months = {"", "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
+        String monthName = (month >= 1 && month <= 12) ? months[month] : "Unknown";
+        return String.format("%d %s %d", day, monthName, year);
     }
 }
