@@ -1,54 +1,57 @@
 package version2;
 
 public class Name {
-    public string firstName;
-    public string middleName;
-    public string lastName;
+    private String firstName;
+    private String middleName;
+    private String lastName;
 
     public Name() {
     }
 
-    public Name(string firstName, string lastName) {
+    public Name(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Name(string firstName, string middleName, string lastName) {
+    public Name(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
     }
 
-    public string getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(string firstName) {
-        this.firstName = firstName;
+    public String getMiddleName() {
+        //need to get first letter only; middle initial
+        if (middleName == null || middleName.isEmpty()) {
+            return "";
+        }
+        return middleName.substring(0, 1);
     }
 
-    public string getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(string middleName) {
-        this.middleName = middleName;
-    }
-
-    public string getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(string lastName) {
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     @Override
     public String toString() {
-        if(middleName == null || middleName.isEmpty()) {
+        if (middleName == null || middleName.isEmpty()) {
             return String.format("%s, %s", lastName, firstName);
         }
         return String.format("%s, %s %s.", lastName, firstName, getMiddleName());
-
     }
 }
